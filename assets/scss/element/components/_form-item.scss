@@ -1,0 +1,14 @@
+.el-form-item.custom-from-item {
+  margin-bottom: 10px;
+
+  .el-form-item__label {
+    line-height: 1.2;
+    padding-bottom: 5px;
+  }
+
+  .el-form-item__content {
+    .el-radio-button__inner {
+      display: block;
+    }
+  }
+}

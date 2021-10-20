@@ -1,0 +1,35 @@
+.custom-el-tabs {
+  .el-tabs {
+    .el-tabs__header {
+      border-bottom: none;
+
+      .el-tabs__nav {
+        width: 100%;
+        display: flex;
+        border-radius: 4px;
+        border: 1px solid $--color-theme-1;
+
+        .el-tabs__item {
+          flex: 1;
+          text-align: center;
+          color: $--color-theme-1;
+          border: none;
+        }
+
+        .is-active {
+          background-color: $--color-theme-1;
+          color: white;
+        }
+      }
+    }
+
+    &__nav-next,
+    &__nav-prev {
+      display: none;
+    }
+
+    &__nav-wrap.is-scrollable {
+      padding: 0;
+    }
+  }
+}

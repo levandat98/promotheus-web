@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./*"],
+      "~~/*": ["./*"],
+      "~functions/*": ["./utils/functions/*"],
+      "~templates/*": ["./components/common/Templates/*"],
+      "~dialog/*": ["./components/common/Templates/Dialog/*"],
+      "~form/*": ["./components/common/Templates/Form/*"],
+      "~input/*": ["./components/common/Templates/Input/*"],
+      "~table/*": ["./components/common/Templates/Table*"],
+    },
+  },
+  "include": ["./**/*", "tailwind.config.js"],
+  "exclude": ["node_modules", ".nuxt", "dist"]
+}

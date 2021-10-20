@@ -1,0 +1,18 @@
+@import './theme/colors';
+@import './theme/fonts';
+@import './components/menu';
+@import './components/tabs';
+@import './components/form-item';
+@import '~element-ui/packages/theme-chalk/src/index';
+
+.no-caret {
+  .el-submenu__icon-arrow {
+    display: none !important;
+  }
+}
+.el-loading-spinner {
+  left: 50%;
+}
+.el-button {
+  outline: none !important;
+}

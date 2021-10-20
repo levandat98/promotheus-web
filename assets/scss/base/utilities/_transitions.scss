@@ -1,0 +1,92 @@
+// Trasition phase:
+// https://vuejs.org/v2/guide/transiti-ons.html#Transition-Classes
+/***SCAFFOLD***/
+// .v-enter {}
+// .v-enter-active {}
+// .v-enter-to {}
+// .v-leave {}
+// .v-leave-active {}
+// .v-leave-to {}
+/***FADE***/
+.fade-enter {
+    opacity: 0;
+}
+.fade-enter-active {
+    transition: opacity 0.2s ease-out;
+}
+.fade-enter-to {
+    opacity: 1;
+}
+.fade-leave {
+    opacity: 1;
+}
+.fade-leave-active {
+    transition: opacity 0.2s ease-out;
+}
+.fade-leave-to {
+    opacity: 0;
+}
+/***SLIDE-FADE***/
+.slide-fade-enter {
+    transform: translateX(50%);
+    opacity: 0;
+}
+.slide-fade-enter-to {
+    transform: translateX(0);
+    opacity: 1;
+}
+.slide-fade-enter-active, .slide-fade-leave-active {
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.320, 1);
+}
+.slide-fade-leave-to {
+    transform: translateX(-10px);
+    opacity: 0;
+}
+
+/*** BOUNCE ***/
+.bounce-enter-active {
+    animation: bounce-in .6s;
+  }
+  .bounce-leave-active {
+    animation: bounce-in .6s reverse;
+  }
+  @keyframes bounce-in {
+    0% {
+      transform: scale(0);
+    }
+    50% {
+      transform: scale(1.5);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  /*** ROTATE ***/
+.rotate-enter {
+    transform: perspective(500px) rotate3d(0, 1, 0, 90deg);
+}
+.rotate-enter-active, .rotate-leave-active {
+    transition: 0.5s;
+}
+.rotate-leave-to {
+    transform: perspective(500px) rotate3d(0, 1, 0, -90deg)
+}
+  /*** TRAY ***/
+.tray-enter,
+.tray-leave-to { opacity: 0 }
+.tray-leave,
+.tray-enter-to { opacity: 1 }
+.tray-enter-active,
+.tray-leave-active { transition: opacity 300ms }
+
+/*** SCALE ***/
+.scale-enter-active,
+.scale-leave-active {
+  transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.scale-enter-from,
+.scale-leave-to {
+  opacity: 0;
+  transform: scale(0.6);
+}   
