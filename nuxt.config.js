@@ -79,6 +79,9 @@ export default {
   css: [
     '~/assets/css/animate.css/all.min.css',
     '~/assets/scss/main.scss', // CSS class customization can cause confliction with other ui package
+    '~/assets/css/tailwind-built.css',
+    '~/assets/css/animate.min.css',
+    '~/assets/css/slick.css',
   ],
   /*
    ** Import scss resource in every component
