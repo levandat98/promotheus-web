@@ -7,6 +7,7 @@ const Cookie = process.client ? require('js-cookie') : undefined
 export const authActions = {
   LOGIN: 'auth/login',
   LOGOUT: 'auth/logout',
+  SIGNUP: 'auth/signUp',
 }
 
 export default {
@@ -32,5 +33,10 @@ export default {
   logout({ commit }) {
     localStorage.removeItem('auth')
     commit(authMutations.SET.AUTH, null, { root: true })
+  },
+  async signUp(form) {
+    const { data } = await this.$clientApi.post('/auth/sign-up', form)
+    console.log(data)
+    return data
   },
 }

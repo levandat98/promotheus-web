@@ -107,7 +107,7 @@
                   </el-radio-group>
                 </InputWrapper>
                 <InputWrapper
-                  rules="required|max_length:30|min_length:8"
+                  rules="required|min_length:8|max_length:30"
                   prop="password"
                   class="-mt-5"
                 >
@@ -130,7 +130,7 @@
                   />
                 </InputWrapper>
                 <InputWrapper
-                  rules="required|max_length:30|min_length:8"
+                  rules="required|min_length:8|max_length:30"
                   prop="confirmPassword"
                   class="-mt-5"
                 >

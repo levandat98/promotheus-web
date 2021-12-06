@@ -1,91 +1,33 @@
 <template>
-  <div>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-    <h1>hihihihi</h1>
-  </div>
+  <div><Genre /></div>
 </template>
 <script>
 import { mapState } from 'vuex'
 import { config } from './config'
+import { Genre } from '~/components/uncommon/Genre'
 import { authActions } from '~/store/auth/actions'
 export default {
   name: 'Home',
   meta: {
     config,
   },
-  layout: 'default',
+  components: {
+    Genre,
+  },
+  layout: 'user',
   middleware: ['auth'],
-  components: {},
   data() {
+    const items = []
+    for (let i = 1; i < 10; i++) {
+      items.push({
+        img: 'https://picsum.photos/500/300',
+        id: i,
+        name: 'ahuhuhuhu',
+        releaseDate: '21-01-1998',
+      })
+    }
     return {
-      file: null,
+      items,
     }
   },
   computed: mapState({
