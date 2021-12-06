@@ -1,5 +1,6 @@
 import { Message } from 'element-ui'
-export default function ({ $axios, store, app }, inject) {
+import { authActions } from '~/store/auth/actions'
+export default function ({ $axios, store, app, redirect }, inject) {
   // Create a custom axios instance
   const authApi = $axios.create({
     headers: {
@@ -22,10 +23,17 @@ export default function ({ $axios, store, app }, inject) {
   })
   authApi.onError((error) => {
     // Must be customized base on your API error structure
-    if (error.response.data.message) {
-      error.response.data.message.forEach((message) => {
-        Message.error(app.i18n.t('error.' + message.code))
-      })
+    if (
+      error?.response?.status === 401 &&
+      localStorage.getItem('auth') !== null &&
+      localStorage.getItem('roleGroup') !== null
+    ) {
+      redirect(`/${store.getters['auth/roleGroup']}/auth/login`)
+      store.dispatch(authActions.LOGOUT)
+    }
+    // Must be customized base on your API error structure
+    if (error?.response?.data?.message) {
+      Message.error(app.i18n.t('error.' + error.response.data.message))
     }
   })
   // Inject to context as $authApi

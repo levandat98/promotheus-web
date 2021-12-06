@@ -1,5 +1,5 @@
 export default {
-  title: 'S-group',
+  title: 'PodCaster',
   introduction: "Don't mind the broken CSS, these are just example.",
   login: 'Login',
   logout: 'Logout',

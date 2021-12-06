@@ -16,8 +16,10 @@ export default function ({ $axios, app }, inject) {
     return config
   })
   clientApi.onError((error) => {
+    console.log('=====================================================')
+    console.log('error', error.response)
     // Must be customized base on your API error structure
-    Message.error(app.i18n.t('error.' + error.response.data.code))
+    Message.error(app.i18n.t('error.' + error.response.data.message))
     // error.response.data.message.forEach((message) => {
     //   console.log('123123')
     //   Message.error(app.i18n.t('error.' + message.code))

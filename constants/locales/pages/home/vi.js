@@ -1,5 +1,5 @@
 export default {
-  title: 'S-group',
+  title: 'PodCaster',
   introduction: 'Đừng bận tậm CSS, đây chỉ là những ví dụ thôi :D',
   login: 'Đăng nhập',
   logout: 'Đăng xuất',

@@ -24,12 +24,30 @@
     </div>
     <div class="flex flex-col">
       <div
-        class="flex items-center flex-1 p-4 rounded-tr cursor-pointer bg-primary-100 text-primary-500 text-xl"
+        class="
+          flex
+          items-center
+          flex-1
+          p-4
+          rounded-tr
+          cursor-pointer
+          bg-primary-100
+          text-primary-500 text-xl
+        "
       >
         <i class="el-icon-check font-bold" />
       </div>
       <div
-        class="flex items-center flex-1 p-4 rounded-br cursor-pointer bg-danger-100 text-danger-500 text-xl"
+        class="
+          flex
+          items-center
+          flex-1
+          p-4
+          rounded-br
+          cursor-pointer
+          bg-danger-100
+          text-danger-500 text-xl
+        "
       >
         <i class="el-icon-close font-bold" />
       </div>

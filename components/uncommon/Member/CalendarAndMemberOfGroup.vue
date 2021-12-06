@@ -45,7 +45,13 @@
           </div>
           <el-row v-for="(item, index) in calendar" :key="index" class="mt-5">
             <div
-              class="flex flex-row justify-between border-solid border-2 p-2 rounded"
+              class="
+                flex flex-row
+                justify-between
+                border-solid border-2
+                p-2
+                rounded
+              "
               style="border-color: #4e5983"
             >
               <span class="pt-2" style="min-width: 80px">{{ item.day }}</span>
