@@ -27,5 +27,7 @@ module.exports = {
     'prefer-arrow-callback': 'off',
     'prettier/prettier': 'error',
     'no-unused-vars': 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    "vue/no-use-v-if-with-v-for": "off"
   },
 }

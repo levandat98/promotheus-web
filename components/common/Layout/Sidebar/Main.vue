@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative duration-300 bg-white"
+    class="duration-500 bg-white flex"
     :style="{
       width: sidebarCollapsed
         ? `${minWidth}px !important`
@@ -48,6 +48,9 @@
             />
           </ul>
         </li>
+        <li>
+          <Player :width="maxWidth" />
+        </li>
         <!-- End sidebar Item -->
       </ul>
     </el-aside>
@@ -62,13 +65,14 @@
 <script>
 import { mapState } from 'vuex'
 import SidebarItem from './SidebarItem.vue'
+import Player from './Player.vue'
 import { sidebar } from '~/constants/config/base/sidebar'
 import { PlayerBar } from '~/components/uncommon/Player'
 export default {
   name: 'Sidebar',
   components: {
     SidebarItem,
-    PlayerBar,
+    Player,
   },
   props: {
     minWidth: {
@@ -77,7 +81,7 @@ export default {
     },
     maxWidth: {
       type: Number,
-      default: 250,
+      default: 350,
     },
   },
   data() {
