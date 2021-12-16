@@ -14,7 +14,7 @@ export default {
   components: {
     Genre,
   },
-  layout: 'user',
+  layout: 'default',
   middleware: ['auth'],
   data() {
     const items = []

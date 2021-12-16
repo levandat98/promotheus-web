@@ -1,6 +1,6 @@
 <template>
   <div
-    class="duration-500 bg-white flex"
+    class="duration-500 bg-white flex h-full"
     :style="{
       width: sidebarCollapsed
         ? `${minWidth}px !important`
@@ -54,7 +54,7 @@
         <!-- End sidebar Item -->
       </ul>
     </el-aside>
-    <div class="sidebar-icon" @click="handleCollapse">
+    <div class="sidebar-icon z-10" @click="handleCollapse">
       <i v-if="!sidebarCollapsed" class="el-icon-s-fold text-xl"></i>
       <i v-else class="el-icon-s-unfold text-xl"></i>
     </div>

@@ -1,7 +1,7 @@
 <template>
   <el-container class="default-layout-container relative bg-gray-100 flex">
     <!-- Left side -->
-    <div class="h-screen sticky top-0">
+    <div class="h-screen sticky top-0 z-10">
       <Sidebar />
     </div>
     <!-- Right side -->
