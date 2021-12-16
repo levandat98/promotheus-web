@@ -1,19 +1,22 @@
 <template>
-  <el-container class="default-layout-container relative bg-gray-100">
-    <!-- Left side -->
-    <Sidebar />
-    <!-- Right side -->
-    <el-container class="flex-col default-page-background">
-      <Navbar />
-      <el-container>
-        <nuxt class="relative m-auto" />
+  <div>
+    <el-container class="default-layout-container bg-gray-100">
+      <!-- Left side -->
+      <Sidebar />
+      <!-- Right side -->
+      <el-container class="flex-col default-page-background">
+        <Navbar />
+        <el-container>
+          <nuxt class="relative" />
+        </el-container>
       </el-container>
     </el-container>
-  </el-container>
+  </div>
 </template>
 
 <script>
 import { Navbar, Sidebar } from '~/components/common/Layout'
+import { PlayerBar } from '~/components/uncommon/Player'
 export default {
   name: 'Default',
   components: {

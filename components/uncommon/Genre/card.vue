@@ -3,22 +3,25 @@
     class="
       ml-3
       mb-3
-      lg:w-44
-      md:w-40
+      lg:w-40
+      md:w-32
+      sm:w-28
       bg-white
       rounded-xl
       overflow-hidden
       shadow-lg
-      hover:shadow-xl hover:scale-125
       duration-300
       transform
       transition
       cursor-pointer
     "
+    :class="[isHover ? 'scale-125 shadow-xl z-50 shadow-md' : '']"
+    @mouseover="mouseOver"
+    @mouseleave="mouseleave"
   >
     <img :src="card.img" alt="" />
     <div class="p-2">
-      <h1 class="font-bold">{{ card.name }}</h1>
+      <h1 class="font-bold hover:underline">{{ card.name }}</h1>
       <p class="mt-2 font-semi text-gray-600">{{ card.author }}</p>
       <p class="mt-1 text-gray-500 font-">
         {{ card.releaseDate }} - {{ card.audioLength }}
@@ -64,6 +67,19 @@ export default {
           },
         }
       },
+    },
+  },
+  data: function () {
+    return {
+      isHover: false,
+    }
+  },
+  methods: {
+    mouseOver: function () {
+      this.isHover = true
+    },
+    mouseleave: function () {
+      this.isHover = false
     },
   },
 }

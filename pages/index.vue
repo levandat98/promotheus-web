@@ -1,5 +1,5 @@
 <template>
-  <div><Genre /></div>
+  <div><Genre v-for="item in items" :key="item.id" /></div>
 </template>
 <script>
 import { mapState } from 'vuex'
@@ -18,12 +18,10 @@ export default {
   middleware: ['auth'],
   data() {
     const items = []
-    for (let i = 1; i < 10; i++) {
+    for (let i = 1; i < 6; i++) {
       items.push({
-        img: 'https://picsum.photos/500/300',
+        gerne: 'Your Episode',
         id: i,
-        name: 'ahuhuhuhu',
-        releaseDate: '21-01-1998',
       })
     }
     return {

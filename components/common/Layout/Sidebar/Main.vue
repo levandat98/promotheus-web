@@ -55,6 +55,7 @@
       <i v-if="!sidebarCollapsed" class="el-icon-s-fold text-xl"></i>
       <i v-else class="el-icon-s-unfold text-xl"></i>
     </div>
+    <PlayerBar />
   </div>
 </template>
 
@@ -62,10 +63,12 @@
 import { mapState } from 'vuex'
 import SidebarItem from './SidebarItem.vue'
 import { sidebar } from '~/constants/config/base/sidebar'
+import { PlayerBar } from '~/components/uncommon/Player'
 export default {
   name: 'Sidebar',
   components: {
     SidebarItem,
+    PlayerBar,
   },
   props: {
     minWidth: {
