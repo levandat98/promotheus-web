@@ -1,5 +1,5 @@
 <template>
-  <header class="bg-transparent sticky-bar mt-4">
+  <header class="bg-white sticky-bar">
     <div class="container bg-transparent">
       <nav class="bg-transparent flex justify-between items-center py-3">
         <ul

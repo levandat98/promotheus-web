@@ -1,10 +1,14 @@
 <template>
-  <div>
+  <div class="mt-5 justify-self-start justify-items-start">
     <div class="flex justify-between">
-      <h1 class="text-2xl font-bold pt-5 pl-3"><a href="#">Your Episode</a></h1>
-      <h3 class="text-xl font-semi pt-5 mr-32"><a href="#">See all</a></h3>
+      <h1 class="text-2xl font-bold pt-5 pl-3 hover:underline">
+        <a href="#">Your Episode</a>
+      </h1>
+      <h3 class="text-lg font-semi pt-5 mr-32 hover:underline">
+        <a href="#">See all</a>
+      </h3>
     </div>
-    <div class="flex flex-wrap">
+    <div class="flex flex-wrap justify-items-start">
       <Card v-for="card in listCard" :key="card.id" :card="card" />
     </div>
   </div>
@@ -22,7 +26,7 @@ export default {
       type: Array,
       default() {
         const a = []
-        for (let i = 0; i < 10; i += 1) {
+        for (let i = 0; i < 6; i += 1) {
           a.push({
             id: i,
             name: 'Ba cọc ba đồng',
