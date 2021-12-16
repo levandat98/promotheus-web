@@ -1,6 +1,10 @@
 <template>
   <div>
-    <div v-if="!sidebarCollapsed" id="app" class="wrapper">
+    <div
+      v-if="!sidebarCollapsed"
+      id="app"
+      class="wrapper absolute bottom-0 left-0"
+    >
       <div
         class="player"
         :style="{
@@ -80,8 +84,8 @@
             <div
               class="player-controls__item -xl js-play"
               :style="{
-                width: `${width / 4}px !important`,
-                height: `${width / 4}px !important`,
+                width: `${width / 6}px !important`,
+                height: `${width / 6}px !important`,
               }"
               @click="play"
             >
@@ -482,7 +486,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
   // background: url(../img/bg.png) no-repeat center;
   background-size: cover;
   @media screen and (max-width: 700px), (max-height: 500px) {
@@ -773,41 +776,6 @@ body {
     @media screen and (max-width: 576px), (max-height: 500px) {
       font-size: 18px;
       min-height: 50px;
-    }
-  }
-}
-
-.github-btn {
-  position: absolute;
-  right: 40px;
-  bottom: 50px;
-  text-decoration: none;
-  padding: 15px 25px;
-  border-radius: 4px;
-  box-shadow: 0px 4px 30px -6px rgba(36, 52, 70, 0.65);
-  background: #24292e;
-  color: #fff;
-  font-weight: bold;
-  letter-spacing: 1px;
-  font-size: 16px;
-  transition: all 0.3s ease-in-out;
-
-  @media screen and (min-width: 500px) {
-    &:hover {
-      transform: scale(1.1);
-      box-shadow: 0px 17px 20px -6px rgba(36, 52, 70, 0.36);
-    }
-  }
-
-  @media screen and (max-width: 700px) {
-    position: relative;
-    bottom: auto;
-    right: auto;
-    margin-top: 20px;
-
-    &:active {
-      transform: scale(1.1);
-      box-shadow: 0px 17px 20px -6px rgba(36, 52, 70, 0.36);
     }
   }
 }
