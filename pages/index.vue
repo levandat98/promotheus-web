@@ -1,5 +1,75 @@
 <template>
-  <h1>hihihihi</h1>
+  <div>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+    <h1>hihihihi</h1>
+  </div>
 </template>
 <script>
 import { mapState } from 'vuex'
@@ -10,7 +80,7 @@ export default {
   meta: {
     config,
   },
-  layout: 'unauth',
+  layout: 'default',
   middleware: ['auth'],
   components: {},
   data() {

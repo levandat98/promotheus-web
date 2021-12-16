@@ -1,7 +1,9 @@
 <template>
-  <el-container class="default-layout-container relative bg-gray-100">
+  <el-container class="default-layout-container relative bg-gray-100 flex">
     <!-- Left side -->
-    <Sidebar />
+    <div class="h-screen sticky top-0">
+      <Sidebar />
+    </div>
     <!-- Right side -->
     <el-container class="flex-col default-page-background">
       <Navbar />
