@@ -1,21 +1,31 @@
 <template>
-  <h1>hihihihi</h1>
+  <div><Genre v-for="item in items" :key="item.id" /></div>
 </template>
 <script>
 import { mapState } from 'vuex'
 import { config } from './config'
+import { Genre } from '~/components/uncommon/Genre'
 import { authActions } from '~/store/auth/actions'
 export default {
   name: 'Home',
   meta: {
     config,
   },
-  layout: 'unauth',
+  components: {
+    Genre,
+  },
+  layout: 'user',
   middleware: ['auth'],
-  components: {},
   data() {
+    const items = []
+    for (let i = 1; i < 6; i++) {
+      items.push({
+        gerne: 'Your Episode',
+        id: i,
+      })
+    }
     return {
-      file: null,
+      items,
     }
   },
   computed: mapState({

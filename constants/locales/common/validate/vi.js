@@ -30,4 +30,6 @@ export default {
   credit_card_number: 'Sai định dạng số thẻ tín dụng',
   credit_card_expire: 'Sai định dạng ngày hết hạn thẻ tín dụng',
   credit_card_cvv: 'Sai định dạng mã bảo mật cho thẻ tín dụng',
+  min_length: 'Trường này phải có độ dài lớn hơn',
+  max_length: 'Trường này phải có độ dài bé hơn',
 }

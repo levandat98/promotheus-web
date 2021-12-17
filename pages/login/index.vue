@@ -8,17 +8,17 @@
 import { Login } from '~/components/common/Auth'
 import { authActions } from '~/store/auth/actions'
 export default {
-  layout: 'unauth',
+  layout: 'blank',
   // middleware: 'auth',
   components: {
     Login,
   },
   created() {
-    console.log('----------')
-    if (this.$store.state.auth.data) {
-      console.log('=======================')
-      this.$router.push(`/`)
-    }
+    // console.log('----------')
+    // if (this.$store.state.auth.data) {
+    //   console.log('=======================')
+    //   this.$router.push(`/`)
+    // }
   },
   methods: {
     async postLogin(form) {

@@ -17,7 +17,17 @@
         class="project__item w-full flex flex-row flex-nowrap"
       >
         <div
-          class="flex-1 flex items-center rounded-l-sm rounded-r-md px-2 border-l-4 border-theme-1 border-solid bg-theme-1-200 w-full h-10 mr-2"
+          class="
+            flex-1 flex
+            items-center
+            rounded-l-sm rounded-r-md
+            px-2
+            border-l-4 border-theme-1 border-solid
+            bg-theme-1-200
+            w-full
+            h-10
+            mr-2
+          "
         >
           <span>Dự án AudioLoop</span>
         </div>

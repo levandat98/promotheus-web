@@ -161,13 +161,8 @@ export default {
     },
   },
   data() {
-    const {
-      firstName,
-      lastName,
-      gender,
-      birthday,
-      phone,
-    } = this.initialUser.profile
+    const { firstName, lastName, gender, birthday, phone } =
+      this.initialUser.profile
     return {
       options: [
         {

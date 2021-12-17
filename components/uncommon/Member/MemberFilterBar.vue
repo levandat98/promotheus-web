@@ -51,7 +51,14 @@
       <div class="flex flex-row justify-between ml-10" style="width: 220px">
         <span
           style="height: 40px"
-          class="rounded-lg bg-theme-1 hover:bg-theme-1-600 text-white w-36 items-center"
+          class="
+            rounded-lg
+            bg-theme-1
+            hover:bg-theme-1-600
+            text-white
+            w-36
+            items-center
+          "
           @click="handleFilter"
         >
           <!-- <fa :icon="['fas', 'filter']" class="mr-2" /> -->
@@ -61,7 +68,15 @@
         </span>
         <span
           style="height: 40px"
-          class="rounded-lg bg-gray-300 hover:bg-gray-400 text-gray-600 hover:text-gray-100 text-center items-center"
+          class="
+            rounded-lg
+            bg-gray-300
+            hover:bg-gray-400
+            text-gray-600
+            hover:text-gray-100
+            text-center
+            items-center
+          "
           @click="resetFilter"
         >
           <!-- <fa :icon="['fas', 'times']" class="mr-2" /> -->

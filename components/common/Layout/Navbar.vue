@@ -1,18 +1,28 @@
 <template>
-  <nav class="navbar bg-gray-100 flex justify-center w-full">
-    <div
-      class="flex justify-between w-full"
-      style="max-width: var(--max-width)"
-    >
-      <div class="flex items-center">
-        <span class="text-5xl font-bold text-theme-1 m-3">
-          {{ $store.getters['pageTitle'] }}
-        </span>
-      </div>
-      <div class="flex items-center">
-        <div class="mx-4">
-          <fa class="text-theme-1 text-lg" :icon="['fas', 'bell']"></fa>
-        </div>
+  <header class="bg-white sticky-bar">
+    <div class="container bg-transparent">
+      <nav class="bg-transparent flex justify-between items-center py-3">
+        <ul
+          class="hidden lg:flex lg:items-center lg:w-full ml-20 lg:space-x-12"
+        >
+          <FormWrapper ref="userFilterForm" :model="search" class="w-1/2">
+            <InputWrapper
+              rules="no_special|max_length:255"
+              prop="name"
+              class="el-default-input mb-3 mr-3"
+            >
+              <el-input
+                v-model="search"
+                :placeholder="$t('search')"
+                type="text"
+                autocomplete="off"
+                maxlength="255"
+                prefix-icon="el-icon-search"
+              />
+            </InputWrapper>
+          </FormWrapper>
+        </ul>
+
         <el-dropdown @command="handleCommand">
           <div
             class="el-dropdown-link flex flex-row justify-center items-center"
@@ -23,23 +33,19 @@
             ></el-avatar>
             <div class="flex flex-col mr-4">
               <p>
-                {{
-                  `${user.profile && user.profile.firstName} ${
-                    user.profile && user.profile.lastName
-                  }`
-                }}
+                {{ `${user.fullName}` }}
               </p>
-              <p>{{ user.email }}</p>
             </div>
             <i class="el-icon-arrow-down el-icon--right"></i>
           </div>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item command="logout">Log out</el-dropdown-item>
+            <el-dropdown-item command="profile">Profile</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
-      </div>
+      </nav>
     </div>
-  </nav>
+  </header>
 </template>
 
 <script>
@@ -52,6 +58,7 @@ export default {
   data() {
     return {
       defaultAvatar: DEFAULT_AVATAR,
+      search: '',
     }
   },
   computed: {
@@ -69,6 +76,9 @@ export default {
     logout() {
       this.$store.dispatch('auth/logout')
       this.$router.push('/login')
+    },
+    profile() {
+      this.$router.push('/')
     },
   },
 }

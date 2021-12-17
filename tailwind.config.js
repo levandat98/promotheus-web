@@ -23,7 +23,13 @@ module.exports = {
       fontFamily: fonts,
       boxShadow: {
         basic: '0px 2px 4px rgba(0, 0, 0, 0.15)'
-      }
+      },
+      maxWidth: {
+        '1/4': '25%',
+        '1/2': '50%',
+        '3/4': '75%',
+        '4/5': '80%'
+       }
     },
   },
   variants: {},

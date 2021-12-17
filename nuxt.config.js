@@ -44,22 +44,15 @@ export default {
         hid: 'og:description',
         property: 'og:description',
         content:
-          'Tổ chức hỗ trợ đào tạo nền tảng chuyên môn cho các bạn sinh viên và là bệ phóng khởi sự cho các ý tưởng và dự án.  Với mong muốn tạo ra môi trường kết nối, chia sẻ giữa: Sinh viên - Người có kinh nghiệm - Doanh nghiệp',
+          'Podcast',
       },
     ],
-    link: [
-      { rel: 'icon', type: 'image/png', href: '/tab-logo.png' },
-      {
-        href:
-          'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap',
-        rel: 'stylesheet',
-      },
-    ],
+    
   },
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: 'green' },
+  loading: { color: 'blue', throttle: 0,  height: '3px' },
   /*
    ** Customize how page and layout transition looks
    */
@@ -79,6 +72,9 @@ export default {
   css: [
     '~/assets/css/animate.css/all.min.css',
     '~/assets/scss/main.scss', // CSS class customization can cause confliction with other ui package
+    '~/assets/css/tailwind-built.css',
+    '~/assets/css/animate.min.css',
+    '~/assets/css/slick.css',
   ],
   /*
    ** Import scss resource in every component

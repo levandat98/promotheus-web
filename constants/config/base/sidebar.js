@@ -4,8 +4,15 @@ export const sidebar = {
   config: {},
   items: [
     {
-      module: 'dashboard', // Module name for localization
-      icon: ['fas', 'tachometer-alt'], // Fontawesome or Element UI icon
+      module: 'home', // Module name for localization
+      icon: ['fas', 'home'], // Fontawesome or Element UI icon
+      color: 'var(--color-yellow)',
+      route: { name: '/' },
+      permission: ALL, // ALL or match ./auth.js
+    },
+    {
+      module: 'explore', // Module name for localization
+      icon: ['fas', 'compass'], // Fontawesome or Element UI icon
       color: 'var(--color-yellow)',
       route: { name: '/' },
       permission: ALL, // ALL or match ./auth.js
@@ -18,8 +25,8 @@ export const sidebar = {
     //   permission: ALL, // ALL or match ./auth.js
     // },
     {
-      module: 'member', // Module name for localization
-      icon: ['fas', 'users'], // Fontawesome or Element UI icon
+      module: 'library', // Module name for localization
+      icon: ['fas', 'book'], // Fontawesome or Element UI icon
       color: 'var(--color-yellow)',
       route: { name: 'members' },
       permission: ALL, // ALL or match ./auth.js
