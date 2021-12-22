@@ -12,6 +12,7 @@
         cursor-pointer
         duration-300
         hover:bg-theme-1-200 hover:text-theme-1
+        text-gray-300
       "
       :class="{
         'bg-theme-1-200 text-theme-1 font-bold  border-theme-1':

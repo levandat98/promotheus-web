@@ -1,11 +1,11 @@
 <template>
-  <el-container class="default-layout-container relative bg-gray-100 flex">
+  <el-container class="default-layout-container text-gray-100 relative flex">
     <!-- Left side -->
     <div class="h-screen sticky top-0 z-10">
       <Sidebar />
     </div>
     <!-- Right side -->
-    <el-container class="flex-col default-page-background">
+    <el-container class="flex-col bg-gray-800">
       <Navbar />
       <el-container>
         <nuxt class="relative m-auto" />

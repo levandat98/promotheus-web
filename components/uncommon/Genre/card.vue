@@ -3,10 +3,10 @@
     class="
       ml-3
       mb-3
-      lg:w-40
-      md:w-32
-      sm:w-28
-      bg-white
+      lg:w-60
+      md:w-36
+      sm:w-32
+      bg-gray-700
       rounded-xl
       overflow-hidden
       shadow-lg
@@ -22,15 +22,16 @@
     <img :src="card.img" alt="" />
     <div class="p-2">
       <h1 class="font-bold hover:underline">{{ card.name }}</h1>
-      <p class="mt-2 font-semi text-gray-600">{{ card.author }}</p>
+      <p class="mt-2 font-semi text-gray-300">{{ card.creator.fullName }}</p>
       <p class="mt-1 text-gray-500 font-">
-        {{ card.releaseDate }} - {{ card.audioLength }}
-        {{ card.audioLengthUnit }}
+        {{ dateFormat }} -
+        {{ audioLengthFormat }}
       </p>
     </div>
   </div>
 </template>
 <script>
+import moment from 'moment'
 export default {
   name: 'Card',
   props: {
@@ -44,9 +45,11 @@ export default {
               return 'El poder de la lampara'
             },
           },
-          author: {
-            type: String,
-            default: 'John Smith',
+          creator: {
+            type: Object,
+            default: {
+              name: 'John Smith',
+            },
           },
           releaseDate: {
             type: String,
@@ -56,10 +59,7 @@ export default {
             type: Number,
             default: 15,
           },
-          audioLengthUnit: {
-            type: String,
-            default: 'Min',
-          },
+
           img: {
             type: String,
             default:
@@ -74,6 +74,32 @@ export default {
       isHover: false,
     }
   },
+  computed: {
+    dateFormat() {
+      return moment(this.$props.card.releaseDate).format('DD/MM/YY')
+    },
+    audioLengthFormat() {
+      let time = this.$props.card.audioLength
+      if (time >= 60 && time <= 3600) {
+        let minutes = Math.floor(time / 60)
+        let seconds = time - minutes * 60
+
+        return `${minutes >= 10 ? minutes : ' 0' + minutes.toString()}:${
+          seconds >= 10 ? seconds : ' 0' + seconds.toString()
+        }`
+      } else if (time >= 3600) {
+        let hours = Math.floor(time / 3600)
+        let minutes = Math.floor(time / 60)
+        let seconds = time - minutes * 60
+        return `${hours >= 10 ? hours : ' 0' + hours.toString()}:${
+          minutes >= 10 ? minutes : ' 0' + minutes.toString()
+        }:${seconds >= 10 ? seconds : ' 0' + seconds.toString()}`
+      } else {
+        return time
+      }
+    },
+  },
+  created() {},
   methods: {
     mouseOver: function () {
       this.isHover = true

@@ -495,13 +495,14 @@ body {
 }
 
 .player {
-  background: #eef3f7;
+  background: #204051;
   width: 410px;
   //min-height: 480px;
   // box-shadow: 0px 55px 75px -10px rgba(76, 70, 124, 0.5);
   // box-shadow: 0px 55px 105px 10px rgba(76, 70, 124, 0.35);
   box-shadow: 0px 15px 35px -5px rgba(50, 88, 130, 0.32);
-  border-radius: 15px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
   padding: 10px;
   @media screen and (max-width: 576px), (max-height: 500px) {
     width: 95%;
@@ -613,7 +614,7 @@ body {
       font-size: 30px;
       padding: 5px;
       margin-bottom: 10px;
-      color: #acb8cc;
+      color: #ffffff;
       cursor: pointer;
       width: 50px;
       height: 50px;
@@ -736,7 +737,7 @@ body {
   height: 6px;
   width: 100%;
   cursor: pointer;
-  background-color: #d0d8e6;
+  background-color: #ffffff;
   display: inline-block;
   border-radius: 10px;
 }

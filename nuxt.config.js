@@ -75,6 +75,7 @@ export default {
     '~/assets/css/tailwind-built.css',
     '~/assets/css/animate.min.css',
     '~/assets/css/slick.css',
+    '~/assets/css/site.css',
   ],
   /*
    ** Import scss resource in every component

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="duration-500 bg-white flex h-full"
+    class="duration-500 bg-gray-900 flex h-full"
     :style="{
       width: sidebarCollapsed
         ? `${minWidth}px !important`
