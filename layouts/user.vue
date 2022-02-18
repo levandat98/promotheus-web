@@ -16,7 +16,6 @@
 
 <script>
 import { Navbar, Sidebar } from '~/components/common/Layout'
-import { PlayerBar } from '~/components/uncommon/Player'
 export default {
   name: 'Default',
   components: {

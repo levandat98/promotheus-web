@@ -8,7 +8,7 @@
     <el-container class="flex-col bg-gray-800">
       <Navbar />
       <el-container>
-        <nuxt class="relative m-auto" />
+        <nuxt />
       </el-container>
     </el-container>
   </el-container>

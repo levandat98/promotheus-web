@@ -19,15 +19,22 @@
     @mouseover="mouseOver"
     @mouseleave="mouseleave"
   >
-    <img :src="card.img" alt="" />
-    <div class="p-2">
-      <h1 class="font-bold hover:underline">{{ card.name }}</h1>
-      <p class="mt-2 font-semi text-gray-300">{{ card.creator.fullName }}</p>
-      <p class="mt-1 text-gray-500 font-">
-        {{ dateFormat }} -
-        {{ audioLengthFormat }}
-      </p>
-    </div>
+    <NuxtLink :to="`/episode/${card.id}`">
+      <img :src="card.img" alt="" />
+      <div class="p-2">
+        <h1 class="font-bold hover:underline">{{ card.name }}</h1>
+        <NuxtLink
+          :to="`/creator/${card.creator.id}`"
+          class="mt-2 font-semi text-gray-300 hover:underline"
+        >
+          {{ card.creator.fullName }}
+        </NuxtLink>
+        <p class="mt-1 text-gray-500 font-">
+          {{ dateFormat }} -
+          {{ audioLengthFormat }}
+        </p>
+      </div>
+    </NuxtLink>
   </div>
 </template>
 <script>

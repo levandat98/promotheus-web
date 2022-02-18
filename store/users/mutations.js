@@ -6,6 +6,9 @@ export const userMutations = {
     TOTAL: 'users/SET_TOTAL',
     QUERY: 'users/SET_QUERY',
     SELECTED: 'users/SET_SELECTED',
+    QUEUE: 'users/SET_QUEUE',
+    SET_CURRENT_TRACK: 'users/SET_CURRENT_TRACK',
+    PUSH_TO_QUEUE: 'users/PUSH_TO_QUEUE',
   },
   CLEAR: {
     QUERY: 'users/CLEAR_QUERY',
@@ -50,5 +53,14 @@ export default {
   },
   SUB_QUERY_OFFSET(state) {
     Vue.set(state.query, 'page', state.query.page - 1)
+  },
+  SET_QUEUE(state, queue) {
+    Vue.set(state, 'queue', queue)
+  },
+  SET_CURRENT_TRACK(state, track) {
+    Vue.set(state, 'currentTrack', track)
+  },
+  PUSH_TO_QUEUE(state, track) {
+    Vue.set(state, 'queue', [...state.queue, track])
   },
 }

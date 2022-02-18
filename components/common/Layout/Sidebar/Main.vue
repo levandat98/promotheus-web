@@ -67,7 +67,6 @@ import { mapState } from 'vuex'
 import SidebarItem from './SidebarItem.vue'
 import Player from './Player.vue'
 import { sidebar } from '~/constants/config/base/sidebar'
-import { PlayerBar } from '~/components/uncommon/Player'
 export default {
   name: 'Sidebar',
   components: {
@@ -81,7 +80,7 @@ export default {
     },
     maxWidth: {
       type: Number,
-      default: 350,
+      default: 310,
     },
   },
   data() {

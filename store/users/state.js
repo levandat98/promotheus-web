@@ -6,4 +6,6 @@ export default () => ({
     size: 10,
   },
   selected: null,
+  queue: [],
+  currentTrack: {},
 })

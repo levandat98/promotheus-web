@@ -40,8 +40,6 @@ export default {
       },
     },
   },
-  created() {
-    console.log(this.gerne.name)
-  },
+  created() {},
 }
 </script>

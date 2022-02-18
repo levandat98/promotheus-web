@@ -38,7 +38,6 @@ export default {
     Vue.set(state, 'selected', selected)
   },
   SET_VIEWING(state, viewing) {
-    console.log('[viewing]', viewing)
     Vue.set(state, 'viewing', viewing)
   },
   ADD_DATA(state, data) {
