@@ -6,6 +6,8 @@ export default () => ({
     size: 10,
   },
   selected: null,
-  queue: [],
+  queue: {},
   currentTrack: {},
+  isPlay: false,
+  currentSerieId: 0,
 })

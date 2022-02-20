@@ -87,7 +87,7 @@
                 width: `50px !important`,
                 height: `50px !important`,
               }"
-              @click="play"
+              @click="playTrack"
             >
               <svg class="icon">
                 <use v-if="isTimerPlaying" xlink:href="#icon-pause"></use>
@@ -252,6 +252,7 @@ export default {
       tracks: (state) => state.users.queue,
       currentTrack: (state) =>
         state.users.currentTrack || state.users.queue[0] || {},
+      isPlay: (state) => state.users.isPlay,
     }),
     ...mapActions({
       fetchQueue: userActions.FETCH.QUEUE,
@@ -262,15 +263,16 @@ export default {
       this.generateCurrentTrack()
       this.resetPlayer()
     },
+    isPlay() {
+      this.play()
+    },
   },
   created() {
     this.audio = new Audio()
     this.generateCurrentTrack()
-    this.$bus.$on('play-track', this.play)
   },
   destroyed() {
     // Stop listening the event hello with handler
-    this.$bus.$off('play-track', this.play)
   },
   methods: {
     generateCurrentTrack() {
@@ -301,7 +303,6 @@ export default {
       }
     },
     play() {
-      console.log('>>>>>>>>>>>>>>>>>>>')
       if (this.audio.paused) {
         this.audio.play()
         this.isTimerPlaying = true
@@ -309,6 +310,11 @@ export default {
         this.audio.pause()
         this.isTimerPlaying = false
       }
+    },
+    playTrack() {
+      this.$store.commit(userMutations.SET.SET_PLAY, !this.isPlay, {
+        root: true,
+      })
     },
 
     generateTime() {
@@ -362,7 +368,6 @@ export default {
         (x) => x.id === this.currentTrack.id
       )
       if (this.tracks.length === 1) {
-        console.log('>>>>>>>>>>>>')
         return
       }
       if (currentTrackIndex === -1) {

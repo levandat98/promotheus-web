@@ -9,6 +9,8 @@ export const userMutations = {
     QUEUE: 'users/SET_QUEUE',
     SET_CURRENT_TRACK: 'users/SET_CURRENT_TRACK',
     PUSH_TO_QUEUE: 'users/PUSH_TO_QUEUE',
+    SET_PLAY: 'users/SET_PLAY',
+    SET_SERIE: 'users/SET_SERIE',
   },
   CLEAR: {
     QUERY: 'users/CLEAR_QUERY',
@@ -62,5 +64,11 @@ export default {
   },
   PUSH_TO_QUEUE(state, track) {
     Vue.set(state, 'queue', [...state.queue, track])
+  },
+  SET_PLAY(state, isPlay) {
+    Vue.set(state, 'isPlay', isPlay)
+  },
+  SET_SERIE(state, id) {
+    Vue.set(state, 'currentSerieId', id)
   },
 }
