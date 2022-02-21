@@ -84,8 +84,8 @@
             <div
               class="player-controls__item -xl js-play"
               :style="{
-                width: `50px !important`,
-                height: `50px !important`,
+                width: `${width / 6}px !important`,
+                height: `${width / 6}px !important`,
               }"
               @click="playTrack"
             >
