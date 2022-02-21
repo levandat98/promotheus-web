@@ -4,7 +4,7 @@
  * You must use these roles for your <auth> wrapper or v-auth directive
  * @readonly Do not modify
  */
-const roles = ['SUPERADMIN', 'ADMIN', 'COLABORATOR', 'USER', 'ALL']
+const roles = ['SUPERADMIN', 'ADMIN', 'USER', 'ALL']
 /**
  * SUPERADMIN permission
  * @readonly Do not modify
@@ -26,7 +26,6 @@ const USER = ['USER']
  * Including EDITOR permission
  * @readonly Do not modify
  */
-const COLABORATOR = ['COLABORATOR', 'EDITOR']
 /**
  * Normal user permission
  * @readonly Do not modify
@@ -37,4 +36,4 @@ const ALL = ['ALL']
  * @readonly Do not modify
  */
 
-export { roles, SUPERADMIN, ADMIN, COLABORATOR, ALL, USER }
+export { roles, SUPERADMIN, ADMIN, ALL, USER }

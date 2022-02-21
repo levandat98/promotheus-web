@@ -1,11 +1,11 @@
 <template>
-  <div class="DetailPage">
+  <div class="DetailPage pt-6">
     <div class="header flex">
       <div class="logo">
         <img class="logoImg" :src="creator.avatar" alt="" />
       </div>
       <div class="Title relative">
-        <div class="absolute bottom-6">
+        <div class="absolute bottom-0">
           <span>PODCAST CREATOR</span>
           <div class="font-semibold text-7xl">
             {{ creator.fullName }}
@@ -151,8 +151,7 @@ export default {
   .header {
     background: linear-gradient(transparent 0, rgba(0, 0, 0, 0.5) 100%),
       var(--background-noise);
-    padding-left: 24px;
-    padding-right: 24px;
+    padding: 0px 24px 32px 24px;
     height: 260px;
     .Title {
       width: 100%;
@@ -174,7 +173,6 @@ export default {
     min-width: 232px;
     width: 232px;
     padding-right: 10px;
-    margin-top: 32px;
     .logoImg {
       border-radius: 10px;
     }

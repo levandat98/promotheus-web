@@ -75,6 +75,7 @@ export default {
     '~/assets/css/tailwind-built.css',
     '~/assets/css/animate.min.css',
     '~/assets/css/slick.css',
+    '~/assets/css/site.css',
   ],
   /*
    ** Import scss resource in every component
@@ -92,6 +93,7 @@ export default {
     // Services
     '~/services/auth.js',
     '~/services/client.js',
+    '~/services/file.js',
     // Plugins
     '~/plugins/element-ui',
     '~/plugins/i18n.js',

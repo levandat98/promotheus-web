@@ -1,6 +1,6 @@
 <template>
-  <header class="bg-white sticky-bar">
-    <div class="container bg-transparent">
+  <header class="sticky-bar">
+    <div id="navbar" class="container bg-transparent text-gray-300">
       <nav class="bg-transparent flex justify-between items-center py-3">
         <ul
           class="hidden lg:flex lg:items-center lg:w-full ml-20 lg:space-x-12"
@@ -31,7 +31,7 @@
               class="mr-4"
               :src="user.avatar || defaultAvatar"
             ></el-avatar>
-            <div class="flex flex-col mr-4">
+            <div class="flex flex-col mr-4 text-gray-300">
               <p>
                 {{ `${user.fullName}` }}
               </p>
@@ -39,8 +39,9 @@
             <i class="el-icon-arrow-down el-icon--right"></i>
           </div>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item command="logout">Log out</el-dropdown-item>
             <el-dropdown-item command="profile">Profile</el-dropdown-item>
+            <el-dropdown-item command="studio">Studio</el-dropdown-item>
+            <el-dropdown-item command="logout">Log out</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </nav>
@@ -80,11 +81,18 @@ export default {
     profile() {
       this.$router.push('/')
     },
+    studio() {
+      this.$router.push('/studio')
+    },
   },
 }
 </script>
 <style lang="scss" scoped>
 .navbar {
   height: 100px;
+}
+#navbar {
+  border-bottom: 1px !important;
+  border-block-color: white !important;
 }
 </style>

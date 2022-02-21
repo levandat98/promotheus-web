@@ -1,6 +1,6 @@
 <template>
   <div
-    class="duration-500 bg-white flex h-full"
+    class="duration-500 bg-gray-900 flex h-full"
     :style="{
       width: sidebarCollapsed
         ? `${minWidth}px !important`
@@ -54,11 +54,10 @@
         <!-- End sidebar Item -->
       </ul>
     </el-aside>
-    <div class="sidebar-icon" @click="handleCollapse">
+    <div class="sidebar-icon z-10" @click="handleCollapse">
       <i v-if="!sidebarCollapsed" class="el-icon-s-fold text-xl"></i>
       <i v-else class="el-icon-s-unfold text-xl"></i>
     </div>
-    <PlayerBar />
   </div>
 </template>
 
@@ -67,7 +66,6 @@ import { mapState } from 'vuex'
 import SidebarItem from './SidebarItem.vue'
 import Player from './Player.vue'
 import { sidebar } from '~/constants/config/base/sidebar'
-import { PlayerBar } from '~/components/uncommon/Player'
 export default {
   name: 'Sidebar',
   components: {
@@ -81,7 +79,7 @@ export default {
     },
     maxWidth: {
       type: Number,
-      default: 350,
+      default: 310,
     },
   },
   data() {

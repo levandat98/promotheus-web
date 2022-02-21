@@ -6,4 +6,6 @@ export default {
   notification: 'Tạo thông báo',
   explore: 'Khám phá',
   library: 'Thư viện',
+  Episodes: 'Episodes',
+  Series: 'Series',
 }

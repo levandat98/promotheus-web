@@ -7,7 +7,7 @@ export const sidebar = {
       module: 'home', // Module name for localization
       icon: ['fas', 'home'], // Fontawesome or Element UI icon
       color: 'var(--color-yellow)',
-      route: { name: '/' },
+      route: { name: 'home' },
       permission: ALL, // ALL or match ./auth.js
     },
     {

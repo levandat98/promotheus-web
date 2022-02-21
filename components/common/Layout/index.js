@@ -1,4 +1,5 @@
 export { default as Navbar } from './Navbar.vue'
 export { default as Header } from './Header.vue'
 export { default as Sidebar } from './Sidebar/Main.vue'
+export { default as StudioSidebar } from './Sidebar/Studio.vue'
 export { default as Footer } from './Footer.vue'

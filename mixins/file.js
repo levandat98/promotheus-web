@@ -34,31 +34,36 @@ export default {
         // const fileName = this.getUniqueFileName(file)
         return {
           // Get the file's extension
-          type: file.type,
-          fileName: file.name,
+          type: file.raw.type,
+          fileName: file.raw.name,
           folderPrefix,
         }
       })
-      const response = await this.$baseApi.post('/medias/url-storage', {
-        data: files,
-      })
+      const response = await this.$fileApi.post('/medias/upload', files)
       return response.data
     },
     // Has to have .raw (Element UI uploader's format)
     async uploadFilesToS3(files, folderPrefix) {
-      const urls = await this.getSignedUrlS3(files, folderPrefix)
-      const responseUrls = await Promise.all(
-        urls.map(async (url, index) => {
-          const response = await this.$fileApi.put(url, files[index])
-          if (response.status === 200) {
-            const questionIndex = response.config.url.indexOf('?')
-            const responseUrl = response.config.url.substring(0, questionIndex)
-            return responseUrl
-          }
-          Message.error('Failed to upload image')
-        })
-      )
-      return responseUrls
+      try {
+        const urls = await this.getSignedUrlS3(files, folderPrefix)
+        const responseUrls = await Promise.all(
+          urls.map(async (url, index) => {
+            const response = await this.$fileApi.put(url.link, files[index])
+            if (response?.status === 200) {
+              const questionIndex = response.config.url.indexOf('?')
+              const responseUrl = response.config.url.substring(
+                0,
+                questionIndex
+              )
+              return responseUrl
+            }
+          })
+        )
+        return responseUrls
+      } catch (error) {
+        Message.error('Failed to upload image')
+        console.log('error', error)
+      }
     },
     /**
      *

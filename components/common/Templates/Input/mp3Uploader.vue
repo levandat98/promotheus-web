@@ -1,26 +1,55 @@
 <template>
-  <span>
-    <span @click="triggerFileDialog">
-      <slot name="trigger">
-        <el-button type="primary" round size="small">
-          <span> Upload </span>
-        </el-button>
-      </slot>
-    </span>
-    <span>
-      <slot name="picked-files">
-        <span v-for="file in fileList" :key="file.uid">
-          {{ file.raw.name }}
-        </span>
-      </slot>
-    </span>
-    <span>
-      <slot name="preview-lightbox">
-        <span v-for="file in fileList" :key="file.uid">
-          <img :src="file.url" :alt="file.raw.name" />
-        </span>
-      </slot>
-    </span>
+  <span class="">
+    <slot name="trigger">
+      <div v-if="!fileList.length" class="" round>
+        <div class="flex justify-center">
+          <div class="mb-3 w-96">
+            <label
+              for="formFile"
+              class="form-label inline-block mb-2 text-gray-700"
+              >Default file input example</label
+            >
+            <input
+              id="formFile"
+              class="
+                form-control
+                block
+                w-full
+                px-3
+                py-1.5
+                text-base
+                font-normal
+                text-gray-700
+                bg-white bg-clip-padding
+                border border-solid border-gray-300
+                rounded
+                transition
+                ease-in-out
+                m-0
+                focus:text-gray-700
+                focus:bg-white
+                focus:border-blue-600
+                focus:outline-none
+              "
+              type="file"
+            />
+          </div>
+        </div>
+      </div>
+      <span v-else class="cursor-pointer">
+        <slot name="preview-lightbox">
+          <span v-for="file in fileList" :key="file.uid">
+            <img
+              class="w-56 h-56 p-6 m-4"
+              :src="file.url"
+              :alt="file.raw.name"
+              @click="triggerFileDialog"
+            />
+          </span>
+        </slot>
+      </span>
+    </slot>
+
     <input
       ref="fileInput"
       style="display: none"

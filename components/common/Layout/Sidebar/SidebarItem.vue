@@ -11,10 +11,11 @@
         flex
         cursor-pointer
         duration-300
-        hover:bg-theme-1-200 hover:text-theme-1
+        hover:bg-gray-60 hover:text-theme-1
+        text-gray-300
       "
       :class="{
-        'bg-theme-1-200 text-theme-1 font-bold  border-theme-1':
+        'bg-gray-600 text-theme-1 font-bold  border-theme-1':
           $route.path.split('/')[1] === component.route.name,
         'py-3 px-8': !sidebarCollapsed,
         'py-3 px-2 flex justify-center items-center': sidebarCollapsed,

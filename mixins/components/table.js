@@ -5,6 +5,7 @@
 import qs from 'qs'
 export default {
   async fetch() {
+    console.log('this.moduleActions.FETCH.DATA', this.moduleActions.FETCH.DATA)
     await this.$store.dispatch(this.moduleActions.FETCH.DATA)
     this.pushRouterQuery()
   },
@@ -34,9 +35,8 @@ export default {
       // console.log('Pagination changed to ' + total)
     },
     onPageChange(currentPage) {
-      console.log(currentPage)
       this.$store.commit(this.moduleMutations.SET.QUERY, {
-        page: currentPage,
+        offset: (currentPage - 1) * this.dataQuery.limit,
       })
       this.$fetch()
     },
@@ -47,6 +47,7 @@ export default {
     onPageNext() {
       this.$store.commit(this.moduleMutations.INC.QUERY_PAGE)
       this.$fetch()
+      this.pushRouterQuery()
     },
     onSelectionChange(selected) {
       this.selectedItems = selected
@@ -61,10 +62,11 @@ export default {
     },
     onLimitChange(limit) {
       this.$store.commit(this.moduleMutations.SET.QUERY, {
-        page: 1,
+        offset: 0,
         limit,
       })
       this.$fetch()
+      this.pushRouterQuery()
     },
     onRefresh() {
       this.$store.commit(this.moduleMutations.CLEAR.QUERY)

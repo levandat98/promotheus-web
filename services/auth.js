@@ -13,8 +13,7 @@ export default function ({ $axios, store, app, redirect }, inject) {
   authApi.onRequest((config) => {
     // .setHeader doesn't work
     // await authApi.setHeader('Authorization', store.state.auth.data.token)
-    config.headers.Authorization =
-      'Bearer ' + store.state.auth?.data?.accessToken
+    config.headers.Authorization = 'Bearer ' + store.state.auth?.data?.token
     if (process.env.NODE_ENV === 'development') {
       Message('DevOnly | Authenticated API executed')
     }

@@ -11,11 +11,11 @@ export default function ({ $axios, app, store }, inject) {
         }
         return $axios.post(url, body, {
           headers: {
-            ...body.getHeaders(),
             Authorization: store.state.auth.data.token,
           },
         })
       } catch (error) {
+        console.log(error)
         Message.error(app.i18n.t('error.FILE_UPLOAD_FAILED'))
       }
     },
@@ -25,12 +25,17 @@ export default function ({ $axios, app, store }, inject) {
         if (process.env.NODE_ENV === 'development') {
           Message('DevOnly | File uploading API executed')
         }
-        return $axios.put(signedRequest, file, {
+        console.log(file)
+        const data = new File([file.raw], file.raw.name, {
+          type: file.raw.type,
+        })
+        return $axios.put(signedRequest, data, {
           headers: {
-            'Content-Type': file.type,
+            'Content-Type': file.raw.type,
           },
         })
       } catch (error) {
+        console.log(error)
         Message.error(app.i18n.t('error.FILE_UPLOAD_FAILED'))
       }
     },

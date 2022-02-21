@@ -6,6 +6,11 @@ export const userMutations = {
     TOTAL: 'users/SET_TOTAL',
     QUERY: 'users/SET_QUERY',
     SELECTED: 'users/SET_SELECTED',
+    QUEUE: 'users/SET_QUEUE',
+    SET_CURRENT_TRACK: 'users/SET_CURRENT_TRACK',
+    PUSH_TO_QUEUE: 'users/PUSH_TO_QUEUE',
+    SET_PLAY: 'users/SET_PLAY',
+    SET_SERIE: 'users/SET_SERIE',
   },
   CLEAR: {
     QUERY: 'users/CLEAR_QUERY',
@@ -41,14 +46,29 @@ export default {
   },
   CLEAR_QUERY(state) {
     Vue.set(state, 'query', {
-      page: 1,
-      size: 10,
+      offset: 0,
+      limit: 10,
     })
   },
-  INC_QUERY_PAGE(state) {
-    Vue.set(state.query, 'page', state.query.page + 1)
+  INC_QUERY_OFFSET(state) {
+    Vue.set(state.query, 'offset', state.query.offset + state.query.limit)
   },
   SUB_QUERY_OFFSET(state) {
-    Vue.set(state.query, 'page', state.query.page - 1)
+    Vue.set(state.query, 'offset', state.query.offset - state.query.limit)
+  },
+  SET_QUEUE(state, queue) {
+    Vue.set(state, 'queue', queue)
+  },
+  SET_CURRENT_TRACK(state, track) {
+    Vue.set(state, 'currentTrack', track)
+  },
+  PUSH_TO_QUEUE(state, track) {
+    Vue.set(state, 'queue', [...state.queue, track])
+  },
+  SET_PLAY(state, isPlay) {
+    Vue.set(state, 'isPlay', isPlay)
+  },
+  SET_SERIE(state, id) {
+    Vue.set(state, 'currentSerieId', id)
   },
 }
