@@ -9,7 +9,7 @@
         class="player"
         :style="{
           width: `${width}px !important`,
-          height: `${width + width / 3}px !important`,
+          height: `${width + width / 5}px !important`,
         }"
       >
         <div class="player__top">
@@ -26,7 +26,7 @@
                 v-if="$index === currentTrackIndex"
                 :key="$index"
                 class="player-cover__item"
-                :style="{ backgroundImage: `url(${track.cover})` }"
+                :style="{ backgroundImage: `url(${track.img})` }"
               ></div>
             </transition-group>
           </div>
@@ -34,8 +34,8 @@
             <div
               class="player-controls__item -favorite"
               :style="{
-                width: `${width / 7}px !important`,
-                height: `${width / 7}px !important`,
+                width: `30px !important`,
+                height: `30px !important`,
               }"
               :class="{ active: currentTrack.favorited }"
               @click="favorite"
@@ -49,8 +49,8 @@
               target="_blank"
               class="player-controls__item"
               :style="{
-                width: `${width / 7}px !important`,
-                height: `${width / 7}px !important`,
+                width: `30px !important`,
+                height: `30px !important`,
               }"
             >
               <svg class="icon">
@@ -60,8 +60,8 @@
             <div
               class="player-controls__item"
               :style="{
-                width: `${width / 7}px !important`,
-                height: `${width / 7}px !important`,
+                width: `30px !important`,
+                height: `30px !important`,
               }"
               @click="prevTrack"
             >
@@ -72,8 +72,8 @@
             <div
               class="player-controls__item"
               :style="{
-                width: `${width / 7}px !important`,
-                height: `${width / 7}px !important`,
+                width: `30px !important`,
+                height: `30px !important`,
               }"
               @click="nextTrack"
             >
@@ -87,7 +87,7 @@
                 width: `${width / 6}px !important`,
                 height: `${width / 6}px !important`,
               }"
-              @click="play"
+              @click="playTrack"
             >
               <svg class="icon">
                 <use v-if="isTimerPlaying" xlink:href="#icon-pause"></use>
@@ -100,7 +100,7 @@
           <div class="progress__top">
             <div v-if="currentTrack" class="album-info">
               <div class="album-info__name">{{ currentTrack.artist }}</div>
-              <div class="album-info__track">{{ currentTrack.name }}</div>
+              <div class="album-info__name">{{ prepareTrackName() }}</div>
             </div>
             <div class="progress__duration">{{ duration }}</div>
           </div>
@@ -215,7 +215,9 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
+import { userActions } from '~/store/users/actions'
+import { userMutations } from '~/store/users/mutations'
 
 export default {
   name: 'Player',
@@ -225,6 +227,13 @@ export default {
       default: 70,
     },
   },
+  async fetch() {
+    try {
+      await this.fetchQueue()
+    } catch (error) {
+      return
+    }
+  },
   data() {
     return {
       audio: null,
@@ -233,99 +242,6 @@ export default {
       duration: null,
       currentTime: null,
       isTimerPlaying: false,
-      tracks: [
-        {
-          name: 'Mekanın Sahibi',
-          artist: 'Norm Ender',
-          cover:
-            'https://raw.githubusercontent.com/muhammederdem/mini-player/master/img/1.jpg',
-          source:
-            'https://raw.githubusercontent.com/muhammederdem/mini-player/master/mp3/1.mp3',
-          url: 'https://www.youtube.com/watch?v=z3wAjJXbYzA',
-          favorited: false,
-        },
-        {
-          name: 'Everybody Knows',
-          artist: 'Leonard Cohen',
-          cover:
-            'https://raw.githubusercontent.com/muhammederdem/mini-player/master/img/2.jpg',
-          source:
-            'https://raw.githubusercontent.com/muhammederdem/mini-player/master/mp3/2.mp3',
-          url: 'https://www.youtube.com/watch?v=Lin-a2lTelg',
-          favorited: true,
-        },
-        {
-          name: 'Extreme Ways',
-          artist: 'Moby',
-          cover:
-            'https://raw.githubusercontent.com/muhammederdem/mini-player/master/img/3.jpg',
-          source:
-            'https://raw.githubusercontent.com/muhammederdem/mini-player/master/mp3/3.mp3',
-          url: 'https://www.youtube.com/watch?v=ICjyAe9S54c',
-          favorited: false,
-        },
-        {
-          name: 'Butterflies',
-          artist: 'Sia',
-          cover:
-            'https://raw.githubusercontent.com/muhammederdem/mini-player/master/img/4.jpg',
-          source:
-            'https://raw.githubusercontent.com/muhammederdem/mini-player/master/mp3/4.mp3',
-          url: 'https://www.youtube.com/watch?v=kYgGwWYOd9Y',
-          favorited: false,
-        },
-        {
-          name: 'The Final Victory',
-          artist: 'Haggard',
-          cover:
-            'https://raw.githubusercontent.com/muhammederdem/mini-player/master/img/5.jpg',
-          source:
-            'https://raw.githubusercontent.com/muhammederdem/mini-player/master/mp3/5.mp3',
-          url: 'https://www.youtube.com/watch?v=0WlpALnQdN8',
-          favorited: true,
-        },
-        {
-          name: 'Genius ft. Sia, Diplo, Labrinth',
-          artist: 'LSD',
-          cover:
-            'https://raw.githubusercontent.com/muhammederdem/mini-player/master/img/6.jpg',
-          source:
-            'https://raw.githubusercontent.com/muhammederdem/mini-player/master/mp3/6.mp3',
-          url: 'https://www.youtube.com/watch?v=HhoATZ1Imtw',
-          favorited: false,
-        },
-        {
-          name: 'The Comeback Kid',
-          artist: 'Lindi Ortega',
-          cover:
-            'https://raw.githubusercontent.com/muhammederdem/mini-player/master/img/7.jpg',
-          source:
-            'https://raw.githubusercontent.com/muhammederdem/mini-player/master/mp3/7.mp3',
-          url: 'https://www.youtube.com/watch?v=me6aoX0wCV8',
-          favorited: true,
-        },
-        {
-          name: 'Overdose',
-          artist: 'Grandson',
-          cover:
-            'https://raw.githubusercontent.com/muhammederdem/mini-player/master/img/8.jpg',
-          source:
-            'https://raw.githubusercontent.com/muhammederdem/mini-player/master/mp3/8.mp3',
-          url: 'https://www.youtube.com/watch?v=00-Rl3Jlx-o',
-          favorited: false,
-        },
-        {
-          name: "Rag'n'Bone Man",
-          artist: 'Human',
-          cover:
-            'https://raw.githubusercontent.com/muhammederdem/mini-player/master/img/9.jpg',
-          source:
-            'https://raw.githubusercontent.com/muhammederdem/mini-player/master/mp3/9.mp3',
-          url: 'https://www.youtube.com/watch?v=L3wKzyIN1yk',
-          favorited: false,
-        },
-      ],
-      currentTrack: null,
       currentTrackIndex: 0,
       transitionName: null,
     }
@@ -333,38 +249,59 @@ export default {
   computed: {
     ...mapState({
       sidebarCollapsed: (state) => state.sidebarCollapsed,
+      tracks: (state) => state.users.queue,
+      currentTrack: (state) =>
+        state.users.currentTrack || state.users.queue[0] || {},
+      isPlay: (state) => state.users.isPlay,
+    }),
+    ...mapActions({
+      fetchQueue: userActions.FETCH.QUEUE,
     }),
   },
+  watch: {
+    currentTrack() {
+      this.generateCurrentTrack()
+      this.resetPlayer()
+    },
+    isPlay() {
+      this.play()
+    },
+  },
   created() {
-    const vm = this
-    this.currentTrack = this.tracks[0]
-    if (process.client) {
-      this.audio = new Audio()
-      this.audio.src = this.currentTrack.source
-      this.audio.ontimeupdate = function () {
-        vm.generateTime()
-      }
-      this.audio.onloadedmetadata = function () {
-        vm.generateTime()
-      }
-      this.audio.onended = function () {
-        vm.nextTrack()
-        this.isTimerPlaying = true
-      }
-    }
-    // this is optional (for preload covers)
-    for (let index = 0; index < this.tracks.length; index++) {
-      const element = this.tracks[index]
-      if (process.client) {
-        const link = document.createElement('link')
-        link.rel = 'prefetch'
-        link.href = element.cover
-        link.as = 'image'
-        document.head.appendChild(link)
-      }
-    }
+    this.audio = new Audio()
+    this.generateCurrentTrack()
+  },
+  destroyed() {
+    // Stop listening the event hello with handler
   },
   methods: {
+    generateCurrentTrack() {
+      const vm = this
+      if (process.client) {
+        this.audio.src = this.currentTrack.source
+        this.audio.ontimeupdate = function () {
+          vm.generateTime()
+        }
+        this.audio.onloadedmetadata = function () {
+          vm.generateTime()
+        }
+        this.audio.onended = function () {
+          vm.nextTrack()
+          this.isTimerPlaying = true
+        }
+      }
+      // this is optional (for preload covers)
+      for (let index = 0; index < this.tracks.length; index++) {
+        const element = this.tracks[index]
+        if (process.client) {
+          const link = document.createElement('link')
+          link.rel = 'prefetch'
+          link.href = element.cover
+          link.as = 'image'
+          document.head.appendChild(link)
+        }
+      }
+    },
     play() {
       if (this.audio.paused) {
         this.audio.play()
@@ -374,6 +311,12 @@ export default {
         this.isTimerPlaying = false
       }
     },
+    playTrack() {
+      this.$store.commit(userMutations.SET.SET_PLAY, !this.isPlay, {
+        root: true,
+      })
+    },
+
     generateTime() {
       const width = (100 / this.audio.duration) * this.audio.currentTime
       this.barWidth = width + '%'
@@ -421,41 +364,94 @@ export default {
     prevTrack() {
       this.transitionName = 'scale-in'
       this.isShowCover = false
-      if (this.currentTrackIndex > 0) {
-        this.currentTrackIndex--
-      } else {
-        this.currentTrackIndex = this.tracks.length - 1
+      const currentTrackIndex = this.tracks.findIndex(
+        (x) => x.id === this.currentTrack.id
+      )
+      if (this.tracks.length === 1) {
+        return
       }
-      this.currentTrack = this.tracks[this.currentTrackIndex]
+      if (currentTrackIndex === -1) {
+        return
+      }
+      if (currentTrackIndex === 0) {
+        this.currentTrackIndex = this.currentTrack.length
+        this.$store.commit(
+          userMutations.SET.SET_CURRENT_TRACK,
+          this.tracks[this.currentTrack.length],
+          {
+            root: true,
+          }
+        )
+      } else {
+        this.currentTrackIndex = currentTrackIndex - 1
+        this.$store.commit(
+          userMutations.SET.SET_CURRENT_TRACK,
+          this.tracks[currentTrackIndex - 1],
+          {
+            root: true,
+          }
+        )
+      }
       this.resetPlayer()
     },
     nextTrack() {
       this.transitionName = 'scale-out'
       this.isShowCover = false
-      if (this.currentTrackIndex < this.tracks.length - 1) {
-        this.currentTrackIndex++
-      } else {
-        this.currentTrackIndex = 0
+      const currentTrackIndex = this.tracks.findIndex(
+        (x) => x.id === this.currentTrack.id
+      )
+      if (this.tracks.length === 1) {
+        console.log('>>>>>>>>>>>>')
+        return
       }
-      this.currentTrack = this.tracks[this.currentTrackIndex]
+      if (currentTrackIndex === -1) {
+        return
+      }
+      if (currentTrackIndex === this.currentTrack.length) {
+        this.currentTrackIndex = 0
+        this.$store.commit(
+          userMutations.SET.SET_CURRENT_TRACK,
+          this.tracks[0],
+          {
+            root: true,
+          }
+        )
+      } else {
+        this.currentTrackIndex = currentTrackIndex + 1
+        this.$store.commit(
+          userMutations.SET.SET_CURRENT_TRACK,
+          this.tracks[currentTrackIndex + 1],
+          {
+            root: true,
+          }
+        )
+      }
+
       this.resetPlayer()
     },
     resetPlayer() {
       this.barWidth = 0
       this.circleLeft = 0
-      this.audio.currentTime = 0
-      this.audio.src = this.currentTrack.source
-      setTimeout(() => {
-        if (this.isTimerPlaying) {
-          this.audio.play()
-        } else {
-          this.audio.pause()
-        }
-      }, 300)
+      if (this.audio) {
+        this.audio.currentTime = 0
+        this.audio.src = this.currentTrack.source
+        setTimeout(() => {
+          if (this.isTimerPlaying) {
+            this.audio.play()
+          } else {
+            this.audio.pause()
+          }
+        }, 300)
+      }
     },
     favorite() {
       this.tracks[this.currentTrackIndex].favorited =
         !this.tracks[this.currentTrackIndex].favorited
+    },
+    prepareTrackName() {
+      return this.currentTrack?.name?.length > 25
+        ? this.currentTrack?.name?.substring(0, 20) + '..'
+        : this.currentTrack.name
     },
   },
 }
@@ -495,13 +491,14 @@ body {
 }
 
 .player {
-  background: #eef3f7;
+  background: #204051;
   width: 410px;
   //min-height: 480px;
   // box-shadow: 0px 55px 75px -10px rgba(76, 70, 124, 0.5);
   // box-shadow: 0px 55px 105px 10px rgba(76, 70, 124, 0.35);
   box-shadow: 0px 15px 35px -5px rgba(50, 88, 130, 0.32);
-  border-radius: 15px;
+  // border-top-left-radius: 15px;
+  // border-top-right-radius: 15px;
   padding: 10px;
   @media screen and (max-width: 576px), (max-height: 500px) {
     width: 95%;
@@ -533,6 +530,7 @@ body {
     // transform: perspective(512px) translate3d(0, 0, 0);
     // transition: all .4s cubic-bezier(.125, .625, .125, .875);
     z-index: 1;
+    margin-bottom: 24px;
 
     @media screen and (max-width: 576px), (max-height: 500px) {
       margin-top: -70px;
@@ -613,7 +611,7 @@ body {
       font-size: 30px;
       padding: 5px;
       margin-bottom: 10px;
-      color: #acb8cc;
+      color: #ffffff;
       cursor: pointer;
       width: 50px;
       height: 50px;
@@ -721,7 +719,7 @@ body {
   &__duration {
     color: #71829e;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 16px;
     opacity: 0.5;
   }
   &__time {
@@ -736,7 +734,7 @@ body {
   height: 6px;
   width: 100%;
   cursor: pointer;
-  background-color: #d0d8e6;
+  background-color: #ffffff;
   display: inline-block;
   border-radius: 10px;
 }
@@ -750,20 +748,22 @@ body {
 .album-info {
   color: #71829e;
   flex: 1;
-  padding-right: 60px;
   user-select: none;
+  margin-top: 6px;
 
   @media screen and (max-width: 576px), (max-height: 500px) {
     padding-right: 30px;
   }
 
   &__name {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
     margin-bottom: 12px;
+    color: #ffffff;
     line-height: 1.3em;
+    z-index: 1000;
     @media screen and (max-width: 576px), (max-height: 500px) {
-      font-size: 18px;
+      font-size: 16px;
       margin-bottom: 9px;
     }
   }

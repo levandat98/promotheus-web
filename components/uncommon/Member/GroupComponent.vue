@@ -94,7 +94,6 @@ export default {
   },
   methods: {
     onShowDetail() {
-      console.log('[this.group]', this.group)
       this.$store.commit(groupMutations.SET.VIEWING_GROUP, this.group)
       this.$router.push('/members/groups/groupDetail')
     },

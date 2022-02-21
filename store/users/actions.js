@@ -6,6 +6,7 @@ export const userActions = {
     DATA: 'users/fetchData',
     MORE: 'users/fetchMoreData',
     SINGLE: 'users/fetchSingle',
+    QUEUE: 'users/fetchQueue',
   },
   SUBMIT: {
     // MULTIPLE: 'users/submitMultiple',
@@ -31,28 +32,6 @@ export const userActions = {
 
 export default {
   async fetchData({ state, commit }) {
-    // console.log('[state.query]', state.query)
-    // let filters = ``
-    // let response = null
-    // if (state.query.filter) {
-    //   filters = await String(state.query.filter)
-    //   console.log('[filters HERE]', filters)
-    //   delete state.query.filter
-    //   response = await this.$authApi.get(
-    //     'users?' +
-    //       qs.stringify(state.query, { arrayFormat: 'repeat' }) +
-    //       `&filter=${filters}`
-    //   )
-    // } else
-    //   response = await this.$authApi.get(
-    //     'users?' + qs.stringify(state.query, { arrayFormat: 'repeat' })
-    //   )
-    // const response = await this.$authApi.get(
-    //   'users?' +
-    //     'page=1&size=10&offset=0?' +
-    //     'filter:' +
-    //     JSON.stringify(state.query.filter)
-    // )
     const response = await this.$authApi.get(
       'users?' + qs.stringify(state.query, { arrayFormat: 'repeat' })
     )
@@ -91,5 +70,12 @@ export default {
   async changeStatus({ rootState }, { id, body }) {
     const response = await this.$authApi.patch('/users/' + id, body)
     return response
+  },
+  async fetchQueue({ state, rootState, commit }) {
+    const { data } = await this.$authApi.get('/users/queue')
+    commit(userMutations.SET.QUEUE, data, { root: true })
+    commit(userMutations.SET.SET_CURRENT_TRACK, data[0], { root: true })
+
+    return data
   },
 }
