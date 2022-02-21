@@ -7,6 +7,17 @@
         alt=""
       />
     </div>
+    <div class="align-middle my-auto w-full">
+      <div>hihi</div>
+      <el-input
+        v-model="content"
+        type="textarea"
+        :autosize="{ minRows: 1, maxRows: 4 }"
+        placeholder="Please input"
+        class="bg-gray-600"
+      >
+      </el-input>
+    </div>
   </div>
 </template>
 <script>
@@ -27,4 +38,14 @@ export default {
   methods: {},
 }
 </script>
-<style lang="scss"></style>
+<style lang="scss">
+.el-textarea__inner {
+  background-color: var(--color-gray-900);
+  border: 0px;
+  color: #f8f9fa;
+  max-width: 960px;
+}
+.el-textarea {
+  background-color: var(--color-gray-800) !important;
+}
+</style>
