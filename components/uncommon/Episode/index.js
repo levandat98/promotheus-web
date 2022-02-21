@@ -1,1 +1,1 @@
-export { default as EpisodeItem } from './EpisodeItem.vue'
+export { default as EpisodeItem } from './episodeItem.vue'
