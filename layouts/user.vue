@@ -1,10 +1,10 @@
 <template>
   <div>
-    <el-container class="default-layout-container bg-gray-100">
+    <el-container class="default-layout-container text-gray-100 text-gray-100">
       <!-- Left side -->
       <Sidebar />
       <!-- Right side -->
-      <el-container class="flex-col default-page-background">
+      <el-container class="flex-col bg-gray-800">
         <Navbar />
         <el-container>
           <nuxt class="relative" />
@@ -16,7 +16,6 @@
 
 <script>
 import { Navbar, Sidebar } from '~/components/common/Layout'
-import { PlayerBar } from '~/components/uncommon/Player'
 export default {
   name: 'Default',
   components: {

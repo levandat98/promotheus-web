@@ -28,7 +28,15 @@
         circle
         size="mini"
         icon="el-icon-refresh"
-        class="ml-1 select-none border-none duration-150 focus:bg-success focus:text-light shadow hover:bg-success hover:text-light"
+        class="
+          ml-1
+          select-none
+          border-none
+          duration-150
+          focus:bg-success focus:text-light
+          shadow
+          hover:bg-success hover:text-light
+        "
         @click="
           $emit('my-table-on-action', {
             action: 'refresh',
@@ -39,7 +47,15 @@
       </el-button>
       <slot name="button">
         <el-button
-          class="float-right border-0 bg-theme-1 hover:bg-theme-1-600 text-light select-none rounded-lg"
+          class="
+            float-right
+            border-0
+            bg-theme-1
+            hover:bg-theme-1-600
+            text-light
+            select-none
+            rounded-lg
+          "
           size="small"
           @click="$emit('my-table-add-new')"
         >

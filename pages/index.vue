@@ -1,5 +1,5 @@
 <template>
-  <div><Genre v-for="item in items" :key="item.id" /></div>
+  <div><Genre v-for="item in items" :key="item.genre" :gerne="item" /></div>
 </template>
 <script>
 import { mapState } from 'vuex'
@@ -14,18 +14,18 @@ export default {
   components: {
     Genre,
   },
-  layout: 'user',
+  layout: 'default',
   middleware: ['auth'],
+  async fetch() {
+    const { data } = await this.$authApi.get('/episodes/home')
+    this.items = data.results
+  },
   data() {
-    const items = []
-    for (let i = 1; i < 6; i++) {
-      items.push({
-        gerne: 'Your Episode',
-        id: i,
-      })
-    }
     return {
-      items,
+      items: {
+        type: Array,
+        default: [],
+      },
     }
   },
   computed: mapState({

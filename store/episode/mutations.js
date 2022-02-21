@@ -2,29 +2,24 @@ import Vue from 'vue'
 
 export const userMutations = {
   SET: {
-    DATA: 'users/SET_DATA',
-    TOTAL: 'users/SET_TOTAL',
-    QUERY: 'users/SET_QUERY',
-    SELECTED: 'users/SET_SELECTED',
-    QUEUE: 'users/SET_QUEUE',
-    SET_CURRENT_TRACK: 'users/SET_CURRENT_TRACK',
-    PUSH_TO_QUEUE: 'users/PUSH_TO_QUEUE',
-    SET_PLAY: 'users/SET_PLAY',
-    SET_SERIE: 'users/SET_SERIE',
+    DATA: 'episode/SET_DATA',
+    TOTAL: 'episode/SET_TOTAL',
+    QUERY: 'episode/SET_QUERY',
+    SELECTED: 'episode/SET_SELECTED',
   },
   CLEAR: {
-    QUERY: 'users/CLEAR_QUERY',
+    QUERY: 'episode/CLEAR_QUERY',
   },
   TOGGLE: {},
   ADD: {
-    DATA: 'users/ADD_DATA',
+    DATA: 'episode/ADD_DATA',
   },
   REMOVE: {},
   INC: {
-    QUERY_PAGE: 'users/INC_QUERY_PAGE',
+    QUERY_PAGE: 'episode/INC_QUERY_PAGE',
   },
   SUB: {
-    QUERY_PAGE: 'users/SUB_QUERY_PAGE',
+    QUERY_PAGE: 'episode/SUB_QUERY_PAGE',
   },
 }
 
@@ -55,20 +50,5 @@ export default {
   },
   SUB_QUERY_OFFSET(state) {
     Vue.set(state.query, 'page', state.query.page - 1)
-  },
-  SET_QUEUE(state, queue) {
-    Vue.set(state, 'queue', queue)
-  },
-  SET_CURRENT_TRACK(state, track) {
-    Vue.set(state, 'currentTrack', track)
-  },
-  PUSH_TO_QUEUE(state, track) {
-    Vue.set(state, 'queue', [...state.queue, track])
-  },
-  SET_PLAY(state, isPlay) {
-    Vue.set(state, 'isPlay', isPlay)
-  },
-  SET_SERIE(state, id) {
-    Vue.set(state, 'currentSerieId', id)
   },
 }

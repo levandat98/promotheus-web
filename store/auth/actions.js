@@ -21,7 +21,6 @@ export default {
    */
   async login({ commit }, form) {
     const { data } = await this.$clientApi.post('/auth/login', form)
-    console.log(data)
     commit(authMutations.SET.AUTH, data, { root: true }) // Mutating to store for client rendering
     return data
   },
@@ -36,7 +35,6 @@ export default {
   },
   async signUp(form) {
     const { data } = await this.$clientApi.post('/auth/sign-up', form)
-    console.log(data)
     return data
   },
 }
