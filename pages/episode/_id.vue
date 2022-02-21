@@ -6,7 +6,7 @@
       </div>
       <div class="Title relative">
         <div class="absolute bottom-0">
-          <span class="text-sm">PODCAST EPISODE</span>
+          <span class="text-sm cursor-pointer">PODCAST EPISODE </span>
           <div
             class="font-semibold"
             :class="[episodeName.length > 30 ? 'text-5xl' : 'text-7xl']"
@@ -40,7 +40,7 @@
           @click="pauseTrack"
         />
         <fa
-          :icon="['fas', 'plus']"
+          :icon="['fas', 'heart']"
           class="
             text-3xl text-gray-100
             font-medium
@@ -50,6 +50,21 @@
             icon
             text-slate-200
           "
+          :class="isAddedToFavorites ? 'text-blue' : 'text-gray-100'"
+          @click="addedToFavorites"
+        />
+        <fa
+          :icon="['fas', 'plus']"
+          class="
+            text-3xl text-gray-100
+            font-medium
+            absolute
+            mt-2.5
+            ml-20
+            icon
+            text-slate-200
+          "
+          :class="isAddedToqueue ? 'text-blue' : 'text-gray-100'"
           @click="addToQueue"
         />
         <fa
@@ -59,7 +74,7 @@
             font-medium
             absolute
             mt-2.5
-            ml-20
+            ml-32
             icon
             text-slate-200
           "
@@ -74,7 +89,7 @@
       <div class="mt-8">
         <span
           class="
-            text-sm
+            text-xs
             rounded-3xl
             border-2
             px-4
@@ -84,6 +99,10 @@
           "
           >SEE ALL EPISODES</span
         >
+      </div>
+      <div class="comment pt-12">
+        <div class="">Comments</div>
+        <Comments />
       </div>
     </div>
   </div>
@@ -95,13 +114,13 @@ import { userActions } from '~/store/episode/actions'
 import { userMutations } from '~/store/users/mutations'
 import moment from 'moment'
 import { Message } from 'element-ui'
-
+import { Comments } from '~/components/uncommon/comment'
 export default {
   name: 'EpisodeDetail',
   meta: {
     config,
   },
-  components: {},
+  components: { Comments },
   layout: 'default',
   middleware: ['auth'],
   async fetch() {
@@ -111,6 +130,9 @@ export default {
       this.episode = data
       this.episodeName = data.name
       this.creator = data.creator
+      console.log(data)
+      this.isAddedToqueue = data.isAddedToQueue
+      this.isAddedToFavorites = data.isAddedToFavorites
     } catch (error) {
       return
     }
@@ -126,6 +148,8 @@ export default {
         default: {},
       },
       episodeName: '',
+      isAddedToqueue: false,
+      isAddedToFavorites: false,
     }
   },
   computed: mapState({
@@ -181,10 +205,25 @@ export default {
       const { data } = await this.$authApi.post(`/users/queue/${id}`)
       console.log(data)
       if (data) {
-        this.$store.commit(userMutations.SET.PUSH_TO_QUEUE, this.episode, {
-          root: true,
-        })
-        Message.success('Added to queue')
+        if (data.isAdded) {
+          Message.success('Added to queue')
+        } else {
+          Message.success('Removed')
+        }
+        this.isAddedToqueue = data.isAdded
+      }
+    },
+    async addedToFavorites() {
+      const id = this.$route.params.id
+      const { data } = await this.$authApi.post(`/users/favorite/${id}`)
+      console.log(data)
+      if (data) {
+        if (data.isAdded) {
+          Message.success('Added to favorite')
+        } else {
+          Message.success('Removed')
+        }
+        this.isAddedToFavorites = data.isAdded
       }
     },
   },
@@ -230,7 +269,6 @@ export default {
   .icon {
     color: rgb(226, 232, 240);
     :hover {
-      color: rgb(255, 255, 255);
       cursor: pointer;
     }
   }

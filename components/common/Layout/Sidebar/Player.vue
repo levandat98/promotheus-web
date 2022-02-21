@@ -401,7 +401,6 @@ export default {
         (x) => x.id === this.currentTrack.id
       )
       if (this.tracks.length === 1) {
-        console.log('>>>>>>>>>>>>')
         return
       }
       if (currentTrackIndex === -1) {

@@ -154,7 +154,6 @@ export default {
     async addToQueue() {
       const id = this.$route.params.id
       const { data } = await this.$authApi.post(`/users/queue/${id}`)
-      console.log(data)
       if (data) {
         this.$store.commit(userMutations.SET.PUSH_TO_QUEUE, this.episode, {
           root: true,
